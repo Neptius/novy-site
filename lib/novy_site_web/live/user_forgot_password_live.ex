@@ -2,6 +2,7 @@ defmodule NovySiteWeb.UserForgotPasswordLive do
   use NovySiteWeb, :live_view
 
   alias NovyCore.Contexts.Accounts
+  alias NovySite.Services.UserNotifier
 
   def render(assigns) do
     ~H"""
@@ -33,7 +34,7 @@ defmodule NovySiteWeb.UserForgotPasswordLive do
 
   def handle_event("send_email", %{"user" => %{"email" => email}}, socket) do
     if user = Accounts.get_user_by_email(email) do
-      Accounts.deliver_user_reset_password_instructions(
+      UserNotifier.deliver_user_reset_password_instructions(
         user,
         &url(~p"/users/reset_password/#{&1}")
       )

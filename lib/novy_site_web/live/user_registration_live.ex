@@ -3,6 +3,7 @@ defmodule NovySiteWeb.UserRegistrationLive do
 
   alias NovyCore.Contexts.Accounts
   alias NovyCore.Schemas.User
+  alias NovySite.Services.UserNotifier
 
   def render(assigns) do
     ~H"""
@@ -57,7 +58,7 @@ defmodule NovySiteWeb.UserRegistrationLive do
     case Accounts.register_user(user_params) do
       {:ok, user} ->
         {:ok, _} =
-          Accounts.deliver_user_confirmation_instructions(
+          UserNotifier.deliver_user_confirmation_instructions(
             user,
             &url(~p"/users/confirm/#{&1}")
           )

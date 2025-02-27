@@ -10,6 +10,7 @@ defmodule NovySiteWeb.Router do
     plug :put_root_layout, html: {NovySiteWeb.Layouts, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug :fetch_current_user
   end
 
   pipeline :api do
@@ -44,7 +45,6 @@ defmodule NovySiteWeb.Router do
     end
   end
 
-
   ## Authentication routes
 
   scope "/", NovySiteWeb do
@@ -78,7 +78,6 @@ defmodule NovySiteWeb.Router do
 
     live_session :current_user,
       on_mount: [{NovySiteWeb.UserAuth, :mount_current_user}] do
-
       live "/", HomeLive
 
       live "/users/confirm/:token", UserConfirmationLive, :edit

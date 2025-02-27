@@ -17,7 +17,7 @@ defmodule NovySite.Application do
       # Start a worker by calling: NovySite.Worker.start_link(arg)
       # {NovySite.Worker, arg},
       # Start to serve requests, typically the last entry
-      NovySiteWeb.Endpoint,
+      NovySiteWeb.Endpoint
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

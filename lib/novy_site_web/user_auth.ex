@@ -1,4 +1,5 @@
 defmodule NovySiteWeb.UserAuth do
+  @moduledoc false
   use NovySiteWeb, :verified_routes
 
   import Plug.Conn
@@ -151,6 +152,8 @@ defmodule NovySiteWeb.UserAuth do
 
   def on_mount(:ensure_authenticated, _params, session, socket) do
     socket = mount_current_user(socket, session)
+
+    IO.inspect(socket.assigns.current_user)
 
     if socket.assigns.current_user do
       {:cont, socket}

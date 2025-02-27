@@ -33,6 +33,7 @@ defmodule NovySite.MixProject do
   defp deps do
     [
       {:phoenix, "~> 1.7.20"},
+      {:phoenix_ecto, "~> 4.5"},
       {:phoenix_html, "~> 4.1"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:phoenix_live_view, "~> 1.0.0"},
@@ -56,7 +57,7 @@ defmodule NovySite.MixProject do
       {:dns_cluster, "~> 0.1.1"},
       {:bandit, "~> 1.5"},
       {:novy_core, path: "../novy_core"},
-      {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
+      {:credo, "~> 1.7", only: [:dev, :test], runtime: false}
     ]
   end
 

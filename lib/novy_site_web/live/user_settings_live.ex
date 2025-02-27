@@ -2,6 +2,7 @@ defmodule NovySiteWeb.UserSettingsLive do
   use NovySiteWeb, :live_view
 
   alias NovyCore.Contexts.Accounts
+  alias NovySite.Services.UserNotifier
 
   def render(assigns) do
     ~H"""
@@ -121,7 +122,7 @@ defmodule NovySiteWeb.UserSettingsLive do
 
     case Accounts.apply_user_email(user, password, user_params) do
       {:ok, applied_user} ->
-        Accounts.deliver_user_update_email_instructions(
+        UserNotifier.deliver_user_update_email_instructions(
           applied_user,
           user.email,
           &url(~p"/users/settings/confirm_email/#{&1}")
