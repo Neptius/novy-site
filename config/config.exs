@@ -7,9 +7,8 @@
 # General application configuration
 import Config
 
-config :novy_site, ecto_repos: [NovyCore.Repo]
-
-config :novy_site,
+config :novy_core,
+  ecto_repos: [NovyCore.Repo],
   generators: [timestamp_type: :utc_datetime]
 
 # Configures the endpoint
