@@ -9,6 +9,7 @@ defmodule NovySite.Application do
   def start(_type, _args) do
     children = [
       NovySiteWeb.Telemetry,
+      NovyCore.Repo,
       {DNSCluster, query: Application.get_env(:novy_site, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: NovySite.PubSub},
       # Start the Finch HTTP client for sending emails
